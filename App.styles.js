@@ -22,11 +22,15 @@ export const AppStyles = StyleSheet.create({
       width: '100%',
       height: '100%'
     },
+    splashTitle:{
+      fontWeight: "100",
+      position: 'absolute',
+      top: '20%',
+      left: '30%'
+    },
     splash:{
       position: 'absolute',
       top: '30%',
-      left: '20%',
-      shadowColor: 'black',
-      borderColor: 'black'
+      left: '20%'
     }
   });

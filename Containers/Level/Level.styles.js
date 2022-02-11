@@ -24,7 +24,6 @@ export const LvlStyles = StyleSheet.create({
       textAlign: 'center'
     },
     view:{
-        flex: 1,
         padding: 50,
         paddingTop: 0,
         paddingBottom: 0,

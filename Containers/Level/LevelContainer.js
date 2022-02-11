@@ -5,7 +5,8 @@ import app from '../../database/FirebaseDB';
 
 export default function LevelContainer(props){
     const{
-        selected
+        selected,
+        navigation
     } = props
 
     const [experience, setExperience] = useState([{name: "Menos de un año", id: 0}, {name: "mas de un año", id: 1}, {name: "más de dos años", id: 2}])
@@ -32,6 +33,7 @@ export default function LevelContainer(props){
                 <View style={LvlStyles.view}>
                     <Text style={LvlStyles.text}>Indica Tu nivel de experiencia fitness</Text>
                     <FlatList
+                        style={{height:'35%'}}
                         data={experience}
                         renderItem={ ({item})=>{
                             return <Text style={LvlStyles.option} onPress={()=> handleExperince(item.name)}>{item.name}</Text>
@@ -41,10 +43,15 @@ export default function LevelContainer(props){
                 <View style={LvlStyles.view}>
                     <Text style={LvlStyles.text}>Indica el nivel de entrenamiento</Text>                
                     <FlatList
+                        style={{height:'35%'}}
                         data={trainingLevel}
                         renderItem={ ({item})=>{
                             return <Text style={LvlStyles.option} onPress={()=> handleTraining(item.name)}>{item.name}</Text>
                         }}
+                    />
+                    <Button
+                        title="Formulario"
+                        onPress={() => navigation.navigate('User Form')}
                     />
                 </View>}
         </View>
