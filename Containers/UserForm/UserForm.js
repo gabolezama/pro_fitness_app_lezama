@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Button } from 'react-native';
+import { View, Text, FlatList, Button, TouchableOpacity } from 'react-native';
 import ItemForm from './ItemForm';
 import { UserFormStyles } from './UserForm.syles';
 import app from '../../database/FirebaseDB'
 import { getFirestore, collection, getDocs, doc, setDoc,addDoc } from 'firebase/firestore/lite';
+import { TouchableButton } from '../Atom/TochableButton';
 
-export default function UserForm() {
+export default function UserForm(props) {
+
+  const{
+    navigation
+  }= props;
 
   const [formData, setFormData] = useState(['Nombre','Apellido','Edad','Telefono', 'Email'])
   const [inputFormValues, setInputFormValues] = useState({})
   const [readyForSend, setReadyForSend] = useState(false)
+  const [clear, setClear] = useState(false)
 
   const db = getFirestore(app);
   
   useEffect(async()=>{
-    console.log(inputFormValues.Nombre);
     try {
       readyForSend && inputFormValues && await setDoc(doc(db, "Users", `${inputFormValues.Nombre}`), inputFormValues);
       
     } catch (error) {
       console.log(error);
     }
-  }, [readyForSend])
+  }, [readyForSend, clear])
   
   const handleTextInput = (label, text) =>{
     if(text.trim() !== '')
@@ -35,27 +40,29 @@ export default function UserForm() {
       
       setReadyForSend(true)
       alert('Todo ok')
-
+      navigation.navigate('Training Level')
     }else{
       alert('no has completado todos los campos del formulario')
     }
   }
 
-  const handleBtnCancelar = () =>{
-
-  }
-
   return (
     <View>
-      <Text style={UserFormStyles.title}>Introduzca sus datos personales: </Text>
-      <FlatList
-        style={{marginLeft:30, marginBottom: 20, width: '100%'}}
-        data={formData}
-        renderItem={({item})=> <ItemForm label={item} handleInput={(label, text)=>handleTextInput(label, text)}/>}
-      />
-      <View style={UserFormStyles.buttonWrap}>     
-        <Button style={UserFormStyles.button} onPress={()=> handleBtnAceptar()} title="Aceptar"/>
-        <Button style={UserFormStyles.button} onPress={()=> handleBtnCancelar()} title="Cancelar"/>
+      <Text style={UserFormStyles.title}>Formulario de Registro</Text>
+      <View style={{ alignItems: 'center' }}>
+        <FlatList
+          style={{ marginBottom: 20, width: '80%', padding: 5, backgroundColor: 'lightgrey', borderRadius: 20 }}
+          data={formData}
+          renderItem={({ item }) => <ItemForm setClear={(set) => setClear(set)} clear={clear} label={item} handleInput={(label, text) => handleTextInput(label, text)} />}
+        />
+      </View>
+      <View style={UserFormStyles.buttonWrap}>
+        <TouchableOpacity onPress={() => handleBtnAceptar()}>
+          <TouchableButton style={{ paddingLeft: 25 }} textTitle={'Aceptar'} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setClear(true)}>
+          <TouchableButton style={{ paddingLeft: 25 }} textTitle={'Limpiar'} />
+        </TouchableOpacity>
       </View>
     </View>
   );

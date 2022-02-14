@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import {Image, View, Text, Animated} from 'react-native';
 import { AppStyles } from './App.styles';
-import gymSplash from './assets/gym-splash.jpeg'
+import gymSplash from './assets/logo-app.jpg'
 import UserForm from './Containers/UserForm/UserForm';
 import LevelContainer from './Containers/Level/LevelContainer';
 import { UserFormStyles } from './Containers/UserForm/UserForm.syles';
@@ -29,7 +29,7 @@ export default function App() {
     FadeOutSplash()
     setTimeout(()=>{
       setSplash(false)
-    },2000)
+    },3000)
   },[])
   
   return (
@@ -45,8 +45,8 @@ export default function App() {
       :
       <NavigationContainer style={{flex:1, width:'50%', height:'50%'}}>
         <Stack.Navigator>
+          <Stack.Screen name="Sign In" component={UserForm} />
           <Stack.Screen name="Training Level" component={LevelContainer} />
-          <Stack.Screen name="User Form" component={UserForm} />
         </Stack.Navigator>
       </NavigationContainer>
       }

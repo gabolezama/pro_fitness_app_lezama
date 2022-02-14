@@ -1,14 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Text, FlatList } from 'react-native';
+
 export const LvlStyles = StyleSheet.create({
     container: {
+      justifyContent: 'center',
       margin: 10,
+      padding: 10,
       backgroundColor: '#fff',
       height: '90%'
     },
     text:{
       fontSize: 16,
       padding:20,
-      backgroundColor:'red',
+      backgroundColor:'lightblue',
       marginBottom: 10,
       borderRadius: 10,
       textAlign: 'center'
@@ -27,5 +30,26 @@ export const LvlStyles = StyleSheet.create({
         padding: 50,
         paddingTop: 0,
         paddingBottom: 0,
-    }
+    },
   });
+
+  export const MultipleChoice = (props)=>{
+      const{
+        textTitle,
+        displayArray,
+        onAction,
+      }= props;
+
+      return(
+        <View style={LvlStyles.view}>
+          <Text style={LvlStyles.text}>{textTitle}</Text>
+          <FlatList
+            style={{ height: '35%' }}
+            data={ displayArray }
+            renderItem={({ item }) => {
+              return <Text style={LvlStyles.option} onPress={() => onAction(item.name)}>{item.name}</Text>
+            }}
+          />
+        </View>
+      )
+  }

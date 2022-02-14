@@ -3,7 +3,7 @@ export const UserFormStyles = StyleSheet.create({
     title:{
       fontSize: 20,
       marginBottom: 10,
-      marginLeft: 20
+      marginLeft: '12%'
     },
     text:{
 
@@ -17,9 +17,10 @@ export const UserFormStyles = StyleSheet.create({
     },
     wrapper:{
       justifyContent: 'space-between',
-      backgroundColor: 'grey',
+      backgroundColor: 'lightgrey',
+      marginLeft: '1%',
       padding: 10,
-      width: '80%', 
+      width: '100%', 
       flexDirection:'row'
     },
     buttonWrap:{

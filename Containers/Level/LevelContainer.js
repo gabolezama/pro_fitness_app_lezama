@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
-import { LvlStyles } from './Level.styles';
-import app from '../../database/FirebaseDB';
+import { View, TextInput, Button, TouchableOpacity, Text } from 'react-native';
+import { LvlStyles, MultipleChoice } from './Level.styles';
+import {TouchableButton} from '../Atom/TochableButton'
 
 export default function LevelContainer(props){
     const{
@@ -27,33 +27,14 @@ export default function LevelContainer(props){
         setCustomize({...customize, trainingLevel: name})
     }
 
+    const chioce = Object.values(customize).length === 0;
+    const title = chioce ? 'Indica tu nivel de Experiencia en el fitness' : 'Indica el nivel de Intesidad';
+    const arrayIterator = chioce ? experience : trainingLevel;
+    const action = chioce ? handleExperince : handleTraining;
+
     return(
         <View style={LvlStyles.container}>
-                {Object.values(customize).length === 0 ?
-                <View style={LvlStyles.view}>
-                    <Text style={LvlStyles.text}>Indica Tu nivel de experiencia fitness</Text>
-                    <FlatList
-                        style={{height:'35%'}}
-                        data={experience}
-                        renderItem={ ({item})=>{
-                            return <Text style={LvlStyles.option} onPress={()=> handleExperince(item.name)}>{item.name}</Text>
-                        }}
-                    />
-                </View> :
-                <View style={LvlStyles.view}>
-                    <Text style={LvlStyles.text}>Indica el nivel de entrenamiento</Text>                
-                    <FlatList
-                        style={{height:'35%'}}
-                        data={trainingLevel}
-                        renderItem={ ({item})=>{
-                            return <Text style={LvlStyles.option} onPress={()=> handleTraining(item.name)}>{item.name}</Text>
-                        }}
-                    />
-                    <Button
-                        title="Formulario"
-                        onPress={() => navigation.navigate('User Form')}
-                    />
-                </View>}
+                <MultipleChoice textTitle={ title } displayArray={ arrayIterator } onAction={(name)=> action(name)}/>
         </View>
     )
 }

@@ -18,19 +18,21 @@ export const AppStyles = StyleSheet.create({
       marginBottom: 10
     },
     splashContainer:{
-      backgroundColor: 'red',
+      backgroundColor: 'lightblue',
       width: '100%',
       height: '100%'
     },
     splashTitle:{
-      fontWeight: "100",
+      fontSize: 20,
       position: 'absolute',
       top: '20%',
-      left: '30%'
+      left: '28%'
     },
     splash:{
       position: 'absolute',
       top: '30%',
-      left: '20%'
+      left: '10%',
+      width: '80%',
+      height: '50%'
     }
   });
