@@ -9,7 +9,8 @@ import { TouchableButton } from '../Atom/TochableButton';
 export default function UserForm(props) {
 
   const{
-    navigation
+    navigation,
+    font
   }= props;
 
   const [formData, setFormData] = useState(['Nombre','Apellido','Edad','Telefono', 'Email'])
@@ -47,8 +48,8 @@ export default function UserForm(props) {
   }
 
   return (
-    <View>
-      <Text style={UserFormStyles.title}>Formulario de Registro</Text>
+    <View style={UserFormStyles.container}>
+      <Text style={{...UserFormStyles.title, fontFamily: font}}>Formulario de Registro</Text>
       <View style={{ alignItems: 'center' }}>
         <FlatList
           style={{ marginBottom: 20, width: '80%', padding: 5, backgroundColor: 'lightgrey', borderRadius: 20 }}
@@ -58,10 +59,10 @@ export default function UserForm(props) {
       </View>
       <View style={UserFormStyles.buttonWrap}>
         <TouchableOpacity onPress={() => handleBtnAceptar()}>
-          <TouchableButton style={{ paddingLeft: 25 }} textTitle={'Aceptar'} />
+          <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Aceptar'} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setClear(true)}>
-          <TouchableButton style={{ paddingLeft: 25 }} textTitle={'Limpiar'} />
+          <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Limpiar'} />
         </TouchableOpacity>
       </View>
     </View>

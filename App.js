@@ -5,7 +5,8 @@ import { AppStyles } from './App.styles';
 import gymSplash from './assets/logo-app.jpg'
 import UserForm from './Containers/UserForm/UserForm';
 import LevelContainer from './Containers/Level/LevelContainer';
-import { UserFormStyles } from './Containers/UserForm/UserForm.syles';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -32,6 +33,11 @@ export default function App() {
     },3000)
   },[])
   
+  const [loaded, error] = useFonts({
+    'Lobster-Regular': require ('./assets/fonts/Lobster-Regular.ttf')
+  })
+  if(!loaded) return <AppLoading/>
+
   return (
     <>
       {splash ?
@@ -39,13 +45,15 @@ export default function App() {
         ...AppStyles.splashContainer,
         opacity
       }}>
-          <Text style={AppStyles.splashTitle}> PRO FITNESS APP</Text>
+          <Text style={{...AppStyles.splashTitle, fontFamily:'Lobster-Regular'}}> PRO FITNESS APP</Text>
           <Image style={AppStyles.splash} source={ gymSplash }/>
       </Animated.View>
       :
       <NavigationContainer style={{flex:1, width:'50%', height:'50%'}}>
         <Stack.Navigator>
-          <Stack.Screen name="Sign In" component={UserForm} />
+          <Stack.Screen name="Sign In">
+            {()=> <UserForm font={'Lobster-Regular'} />}
+          </Stack.Screen>
           <Stack.Screen name="Training Level" component={LevelContainer} />
         </Stack.Navigator>
       </NavigationContainer>

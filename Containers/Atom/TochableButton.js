@@ -4,12 +4,13 @@ import React from 'react';
 export const TouchableButton = (props)=> {
     const {
         style,
-        textTitle
+        textTitle,
+        font
     } = props;
 
     return (
         <View style={[style,touchableStyle.tochable]}>
-            <Text>{textTitle}</Text>
+            <Text style={{fontFamily: font}}>{textTitle}</Text>
         </View>
     );
 }
