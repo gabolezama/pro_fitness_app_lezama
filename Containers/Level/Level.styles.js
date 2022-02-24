@@ -26,6 +26,14 @@ export const LvlStyles = StyleSheet.create({
       borderRadius: 10,
       textAlign: 'center'
     },
+    optionH:{
+      fontSize: 16,
+      color: 'white',
+      backgroundColor:'grey',
+      marginBottom: 10,
+      borderRadius: 10,
+      textAlign: 'center'
+    },
     view:{
         padding: 50,
         paddingTop: 0,
@@ -35,6 +43,7 @@ export const LvlStyles = StyleSheet.create({
 
   export const MultipleChoice = (props)=>{
       const{
+        orientation,
         textTitle,
         displayArray,
         onAction,
@@ -47,7 +56,7 @@ export const LvlStyles = StyleSheet.create({
             style={{ height: '35%' }}
             data={ displayArray }
             renderItem={({ item }) => {
-              return <Text style={LvlStyles.option} onPress={() => onAction(item.name)}>{item.name}</Text>
+              return <Text style={ orientation? LvlStyles.option : LvlStyles.optionH } onPress={() => onAction(item.name)}>{item.name}</Text>
             }}
           />
         </View>

@@ -1,37 +1,27 @@
 // import 'react-native-gesture-handler';
 import React, { useEffect, useState } from 'react';
-import {Image, View, Text, Animated} from 'react-native';
-import { AppStyles } from './App.styles';
-import gymSplash from './assets/logo-app.jpg'
+import {Dimensions} from 'react-native';
 import UserForm from './Containers/UserForm/UserForm';
 import LevelContainer from './Containers/Level/LevelContainer';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import SplashScreen from './Containers/Splash/SplashScreen';
+
 
 const Stack = createStackNavigator();
 
 export default function App() {
 
+  const {width, height} = Dimensions.get('window')
+
+  const [vertical, setVertical] = useState(height > width)
   const [splash, setSplash] = useState(true)
 
-  const opacity = useState(new Animated.Value(1))[0]
-
-  function FadeOutSplash(){
-    Animated.timing(opacity,{
-      toValue: 0,
-      duration:5000,
-      useNativeDriver:true
-    }).start()
-  }
-
-  useEffect(()=>{
-    FadeOutSplash()
-    setTimeout(()=>{
-      setSplash(false)
-    },3000)
-  },[])
+  Dimensions.addEventListener('change', ({window:{width,height}})=>{
+      setVertical(height > width)
+    })
   
   const [loaded, error] = useFonts({
     'Lobster-Regular': require ('./assets/fonts/Lobster-Regular.ttf')
@@ -41,20 +31,16 @@ export default function App() {
   return (
     <>
       {splash ?
-      <Animated.View style={{
-        ...AppStyles.splashContainer,
-        opacity
-      }}>
-          <Text style={{...AppStyles.splashTitle, fontFamily:'Lobster-Regular'}}> PRO FITNESS APP</Text>
-          <Image style={AppStyles.splash} source={ gymSplash }/>
-      </Animated.View>
+      <SplashScreen orientation={vertical} font={'Lobster-Regular'} setSplash={setSplash}/>
       :
-      <NavigationContainer style={{flex:1, width:'50%', height:'50%'}}>
-        <Stack.Navigator>
+      <NavigationContainer style={vertical ? {flex:1, width:'50%', height:'50%'} : {width:'50%', height:'25%'} }>
+        <Stack.Navigator  screenOptions={{headerStyle:{ backgroundColor:'lightblue'}}}>
           <Stack.Screen name="Sign In">
-            {()=> <UserForm font={'Lobster-Regular'} />}
+            {(props)=> <UserForm {...props} orientation={vertical} font={'Lobster-Regular'}/>}
           </Stack.Screen>
-          <Stack.Screen name="Training Level" component={LevelContainer} />
+          <Stack.Screen name="Training Level">
+            {(props)=> <LevelContainer {...props} orientation={vertical} font={'Lobster-Regular'}/>}
+          </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
       }

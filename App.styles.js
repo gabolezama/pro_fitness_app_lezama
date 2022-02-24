@@ -1,6 +1,7 @@
-import { StyleSheet } from 'react-native';
-import { View } from 'react-native-web';
-import { borderColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import { useState } from 'react';
+import { StyleSheet} from 'react-native';
+
+
 export const AppStyles = StyleSheet.create({
     container: {
       top: 40,
@@ -23,16 +24,31 @@ export const AppStyles = StyleSheet.create({
       height: '100%'
     },
     splashTitle:{
+      zIndex:10,
       fontSize: 20,
       position: 'absolute',
       top: '20%',
       left: '28%'
     },
+    splashTitleH:{
+      zIndex:10,
+      fontSize: 20,
+      position: 'absolute',
+      top: '50%',
+      left: '40%'
+    },
     splash:{
       position: 'absolute',
-      top: '30%',
+      top:  '30%',
       left: '10%',
       width: '80%',
       height: '50%'
+    },
+    splashH:{
+      position: 'absolute',
+      top: '20%',
+      left: '15%',
+      width: '70%',
+      height: '65%'
     }
   });

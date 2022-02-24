@@ -2,14 +2,14 @@ import { View, Text, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { UserFormStyles } from './UserForm.syles';
 
-const ItemForm = ({ label, handleInput, clear, setClear }) => {
+const ItemForm = ({ orientation, label, handleInput, clear, setClear }) => {
 
   useEffect(()=>{
     return ()=> setClear(false)
   },[clear])
   
   return (
-    <View style={UserFormStyles.wrapper}>
+    <View style={orientation ? UserFormStyles.wrapper : UserFormStyles.wrapHorizontal}>
         <Text style={UserFormStyles.text}>Introduzca su {label}: </Text>
         <TextInput
           value={clear && ''}

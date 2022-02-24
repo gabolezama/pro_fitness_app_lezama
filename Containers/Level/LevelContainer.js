@@ -5,8 +5,10 @@ import {TouchableButton} from '../Atom/TochableButton'
 
 export default function LevelContainer(props){
     const{
-        selected,
-        navigation
+        route,
+        orientation,
+        navigation,
+        font
     } = props
 
     const [experience, setExperience] = useState([{name: "Menos de un año", id: 0}, {name: "mas de un año", id: 1}, {name: "más de dos años", id: 2}])
@@ -34,7 +36,7 @@ export default function LevelContainer(props){
 
     return(
         <View style={LvlStyles.container}>
-                <MultipleChoice textTitle={ title } displayArray={ arrayIterator } onAction={(name)=> action(name)}/>
+                <MultipleChoice orientation={orientation} textTitle={ title } displayArray={ arrayIterator } onAction={(name)=> action(name)}/>
         </View>
     )
 }

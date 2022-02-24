@@ -26,6 +26,13 @@ export const UserFormStyles = StyleSheet.create({
       width: '100%', 
       flexDirection:'row'
     },
+    wrapHorizontal:{
+      justifyContent: 'space-between',
+      backgroundColor: 'lightgrey',
+      marginLeft: 30,
+      width: '90%', 
+      flexDirection:'row'
+    },
     buttonWrap:{
       justifyContent: 'space-evenly',
       flexDirection:'row'
