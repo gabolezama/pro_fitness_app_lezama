@@ -36,8 +36,8 @@ export default function UserForm(props) {
     if( Object.keys(inputFormValues).length === 5 && Object.values(inputFormValues).length === 5){
 
       try {
-        inputFormValues && await setDoc(doc(db, "Users", `${inputFormValues.Nombre}`), inputFormValues);
-        navigation.navigate('Training Level')
+        inputFormValues ? await setDoc(doc(db, "Users", `${inputFormValues.Nombre}`), inputFormValues) : null;
+        navigation.navigate('TrainingLevel')
         alert('Todo ok')
         
       } catch (error) {
@@ -63,7 +63,7 @@ export default function UserForm(props) {
         <TouchableOpacity onPress={() => handleBtnAceptar()}>
           <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Aceptar'} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Training Level')}>
+        <TouchableOpacity onPress={() => navigation.navigate('TrainingLevel')}>
           <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Jump'} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setClear(true)}>

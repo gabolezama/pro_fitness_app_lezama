@@ -12,7 +12,7 @@ const ItemForm = ({ orientation, label, handleInput, clear, setClear }) => {
     <View style={orientation ? UserFormStyles.wrapper : UserFormStyles.wrapHorizontal}>
         <Text style={UserFormStyles.text}>Introduzca su {label}: </Text>
         <TextInput
-          value={clear && ''}
+          value={clear ? '' : null}
           onChangeText={(text)=> handleInput(label, text)}
           keyboardType={`${label === 'Edad' || label === 'Telefono'? 'numeric': label === 'Email'? 'email-address' : 'default'}`} 
           style={UserFormStyles.textIn} />

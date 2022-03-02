@@ -25,15 +25,15 @@ export default function SplashScreen({ orientation, font, setSplash }) {
     return (
         <Animated.View style={{
             ...AppStyles.splashContainer,
-            
+            opacity
         }}>
             <Text style={orientation ? {...AppStyles.splashTitle, fontFamily: font} : {...AppStyles.splashTitleH, fontFamily: font}}>
                 PRO FITNESS APP
             </Text>
-            {!orientation && 
+            {!orientation ? 
             <Text style={{...AppStyles.splashTitle, fontFamily: font, top:'60%', left:'45%'}}>
                 WELCOME!!
-            </Text>}
+            </Text>: null}
             <Image style={orientation ? AppStyles.splash : AppStyles.splashH} source={ gymSplash }/>
         </Animated.View>
     )
