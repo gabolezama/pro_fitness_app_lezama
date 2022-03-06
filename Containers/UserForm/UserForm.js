@@ -5,6 +5,9 @@ import { UserFormStyles } from './UserForm.syles';
 import app from '../../database/FirebaseDB'
 import { getFirestore, collection, getDocs, doc, setDoc,addDoc } from 'firebase/firestore/lite';
 import { TouchableButton } from '../Atom/TochableButton';
+import { ScreenSetter, ScreenResetter } from '../Store/actions/actions';
+import { useIsFocused } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 
 export default function UserForm(props) {
 
@@ -21,10 +24,16 @@ export default function UserForm(props) {
 
   const db = getFirestore(app);
   
+  const dispatcher = useDispatch();
+  
   useEffect(async()=>{
       console.log(inputFormValues);
+      dispatcher( ScreenSetter('USER_FORM') )
+        
+      return () => dispatcher( ScreenResetter('USER_FORM') )
   }, [inputFormValues, clear])
   
+
   const handleTextInput = (label, text) =>{
     if(text.trim() !== '')
       setInputFormValues({...inputFormValues, [label]: text})
@@ -37,7 +46,7 @@ export default function UserForm(props) {
 
       try {
         inputFormValues ? await setDoc(doc(db, "Users", `${inputFormValues.Nombre}`), inputFormValues) : null;
-        navigation.navigate('TrainingLevel')
+        navigation.navigate('LevelContainer')
         alert('Todo ok')
         
       } catch (error) {
@@ -63,7 +72,7 @@ export default function UserForm(props) {
         <TouchableOpacity onPress={() => handleBtnAceptar()}>
           <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Aceptar'} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('TrainingLevel')}>
+        <TouchableOpacity onPress={() => navigation.navigate('LevelContainer')}>
           <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Jump'} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setClear(true)}>

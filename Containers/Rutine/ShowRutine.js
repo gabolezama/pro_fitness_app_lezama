@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, Image } from 'react-native'
+import React, { useEffect } from 'react'
 import Rutine from './Rutine'
 
 import pecho from '../../assets/muscles/pecho.jpg'
@@ -15,18 +14,29 @@ import cuadriceps from '../../assets/muscles/cuadriceps.jpg'
 import isquiotibiales from '../../assets/muscles/isquiotibiales.jpg'
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { useDispatch } from 'react-redux'
+import { useIsFocused } from '@react-navigation/native'
+import { ScreenSetter, ScreenResetter } from '../Store/actions/actions'
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function ShowRutine(props) {
 
-    const muscles = ["Pecho","Biceps","Triceps","Espalda","Hombros","Trapecio","Gemelos","Gluteos","Abductores","Cuadriceps","Isquitibiales"]
     const{
         route,
         orientation,
         navigation,
         font
     }= props;
+    const muscles = ["Pecho","Biceps","Triceps","Espalda","Hombros","Trapecio","Gemelos","Gluteos","Abductores","Cuadriceps","Isquitibiales"]
+
+    const dispatcher = useDispatch();
+    
+    useEffect(()=>{
+        dispatcher( ScreenSetter('SHOW_RUTINE') )
+        
+        return () => dispatcher( ScreenResetter('SHOW_RUTINE') )
+    },[])
 
     const imgSource = (str) =>{
         let img = null

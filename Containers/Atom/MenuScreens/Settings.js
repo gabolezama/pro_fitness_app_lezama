@@ -3,11 +3,7 @@ import React, { useEffect } from 'react'
 import { useIsFocused } from '@react-navigation/native'
 
 export default function Settings({navigation}) {
-  const isFocused = useIsFocused()
   
-  useEffect(()=>{
-    return ()=> isFocused ? null : navigation.pop('Settings')
-  },[])
   return (
     <View>
       <Text>Settings</Text>

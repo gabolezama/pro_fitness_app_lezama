@@ -14,7 +14,8 @@ import UserInfo from './Containers/Atom/MenuScreens/UserInfo';
 import Settings from './Containers/Atom/MenuScreens/Settings';
 import Contacts from './Containers/Atom/MenuScreens/Contacts';
 import LogOut from './Containers/Atom/MenuScreens/LogOut';
-
+import { Provider } from 'react-redux'
+import indexStore from './Containers/Store/indexStore';
 
 const Stack = createStackNavigator();
 
@@ -39,26 +40,28 @@ export default function App() {
       {splash ?
       <SplashScreen orientation={vertical} font={'Lobster-Regular'} setSplash={setSplash}/>
       :
-      <NavigationContainer style={vertical ? {flex:1, width:'50%', height:'50%'} : {width:'50%', height:'25%'} }>
-        <Stack.Navigator
-        // initialRouteName='Show Rutine'
-        screenOptions={(props)=>({headerStyle:{ backgroundColor:'lightblue'}, headerTitleStyle:{fontFamily:'Lobster-Regular'}, headerRight: () => <UserIcon navigation={props.navigation}/>})}
-        >
-          <Stack.Screen name="SignIn">
-            {(props)=> <UserForm {...props} orientation={vertical} font={'Lobster-Regular'}/>}
-          </Stack.Screen>
-          <Stack.Screen name="TrainingLevel">
-            {(props)=> <LevelContainer {...props} orientation={vertical} font={'Lobster-Regular'}/>}
-          </Stack.Screen>
-          <Stack.Screen name="ShowRutine">
-            {(props)=> <ShowRutine {...props} orientation={vertical} font={'Lobster-Regular'}/>}
-          </Stack.Screen>
-          <Stack.Screen name='UserInfo' component={UserInfo} options={{headerLeft: ()=> null}}/>
-          <Stack.Screen name='Settings' component={Settings} options={{headerLeft: ()=> null}}/>
-          <Stack.Screen name='Contacts' component={Contacts} options={{headerLeft: ()=> null}}/>
-          <Stack.Screen name='LogOut' component={LogOut} options={{headerLeft: ()=> null}}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Provider store={ indexStore }>
+        <NavigationContainer style={vertical ? {flex:1, width:'50%', height:'50%'} : {width:'50%', height:'25%'} }>
+          <Stack.Navigator
+          // initialRouteName='Show Rutine'
+          screenOptions={(props)=>({headerStyle:{ backgroundColor:'lightblue'}, headerTitleStyle:{fontFamily:'Lobster-Regular'}, headerRight: () => <UserIcon navigation={props.navigation}/>})}
+          >
+            <Stack.Screen name="UserForm">
+              {(props)=> <UserForm {...props} orientation={vertical} font={'Lobster-Regular'}/>}
+            </Stack.Screen>
+            <Stack.Screen name="LevelContainer">
+              {(props)=> <LevelContainer {...props} orientation={vertical} font={'Lobster-Regular'}/>}
+            </Stack.Screen>
+            <Stack.Screen name="ShowRutine">
+              {(props)=> <ShowRutine {...props} orientation={vertical} font={'Lobster-Regular'}/>}
+            </Stack.Screen>
+            <Stack.Screen name='UserInfo' component={UserInfo} options={{headerLeft: ()=> null}}/>
+            <Stack.Screen name='Settings' component={Settings} options={{headerLeft: ()=> null}}/>
+            <Stack.Screen name='Contacts' component={Contacts} options={{headerLeft: ()=> null}}/>
+            <Stack.Screen name='LogOut' component={LogOut} options={{headerLeft: ()=> null}}/>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
       }
     </>
   );
