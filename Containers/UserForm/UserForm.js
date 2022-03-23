@@ -2,12 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Button, TouchableOpacity } from 'react-native';
 import ItemForm from './ItemForm';
 import { UserFormStyles } from './UserForm.syles';
-import app from '../../database/FirebaseDB'
-import { getFirestore, collection, getDocs, doc, setDoc,addDoc } from 'firebase/firestore/lite';
 import { TouchableButton } from '../Atom/TochableButton';
-import { ScreenSetter, ScreenResetter } from '../Store/actions/actions';
-import { useIsFocused } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import { WriteUserInfo, registerUser } from '../Store/actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function UserForm(props) {
 
@@ -15,24 +12,26 @@ export default function UserForm(props) {
     route,
     orientation,
     navigation,
-    font
+    font,
+    setRegisterUser
   }= props;
 
-  const [formData, setFormData] = useState(['Nombre','Apellido','Edad','Telefono', 'Email'])
-  const [inputFormValues, setInputFormValues] = useState({})
+  const [formData, setFormData] = useState(['Nombre','Apellido','Edad','Telefono', 'Email','Género', 'Training Level'])
+  const [inputFormValues, setInputFormValues] = useState({'Género': 'indefinido', 'Training Level': 'bajo'})
   const [clear, setClear] = useState(false)
+  const checkRegister = useSelector( state=> state.httpStatus.authStatus )
+  const dispatcher = useDispatch()
 
-  const db = getFirestore(app);
-  
-  const dispatcher = useDispatch();
-  
   useEffect(async()=>{
-      console.log(inputFormValues);
-      dispatcher( ScreenSetter('USER_FORM') )
-        
-      return () => dispatcher( ScreenResetter('USER_FORM') )
+    console.log(inputFormValues);
   }, [inputFormValues, clear])
   
+  useEffect(()=>{
+    if(checkRegister){
+      dispatcher( WriteUserInfo(inputFormValues) )
+      setRegisterUser(false)
+    }
+  }, [checkRegister])
 
   const handleTextInput = (label, text) =>{
     if(text.trim() !== '')
@@ -40,18 +39,15 @@ export default function UserForm(props) {
     else
       delete inputFormValues[label]
   }
+  
+  const handlePressRadio = (label, value)=>{
+    setInputFormValues({...inputFormValues, [label]: value})
+  }
 
   const handleBtnAceptar = async () =>{
-    if( Object.keys(inputFormValues).length === 5 && Object.values(inputFormValues).length === 5){
+    if( Object.keys(inputFormValues).length === 7 && Object.values(inputFormValues).length === 7){
 
-      try {
-        inputFormValues ? await setDoc(doc(db, "Users", `${inputFormValues.Nombre}`), inputFormValues) : null;
-        navigation.navigate('LevelContainer')
-        alert('Todo ok')
-        
-      } catch (error) {
-        console.log(error);
-      }
+      dispatcher( registerUser(inputFormValues.Email, inputFormValues.Apellido) )
     
     }else{
       alert('no has completado todos los campos del formulario')
@@ -65,15 +61,17 @@ export default function UserForm(props) {
         <FlatList
           style={{ marginBottom: 20, width: '80%', padding: 5, backgroundColor: 'lightgrey', borderRadius: 20 }}
           data={formData}
-          renderItem={({ item }) => <ItemForm orientation={orientation} setClear={(set) => setClear(set)} clear={clear} label={item} handleInput={(label, text) => handleTextInput(label, text)} />}
+          renderItem={({ item }) => <ItemForm orientation={orientation} setClear={(set) => setClear(set)}
+                                    clear={clear} label={item} handleInput={(label, text) => handleTextInput(label, text)}
+                                    onPressRadio={ (label, value)=> handlePressRadio(label, value)}/>}
         />
       </View>
       <View style={UserFormStyles.buttonWrap}>
         <TouchableOpacity onPress={() => handleBtnAceptar()}>
-          <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Aceptar'} />
+          <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Registrar'} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('LevelContainer')}>
-          <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Jump'} />
+        <TouchableOpacity onPress={() => setRegisterUser(false)}>
+          <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Cancelar'} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setClear(true)}>
           <TouchableButton style={{ paddingLeft: 30 }} font={font} textTitle={'Limpiar'} />

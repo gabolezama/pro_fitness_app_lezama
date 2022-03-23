@@ -33,6 +33,13 @@ export const UserFormStyles = StyleSheet.create({
       width: '90%', 
       flexDirection:'row'
     },
+    wrapSelection:{
+      justifyContent: 'space-between',
+      backgroundColor: 'lightgrey',
+      marginLeft: '6%',
+      marginVertical: 5,
+      width: '80%'
+    },
     buttonWrap:{
       justifyContent: 'space-evenly',
       flexDirection:'row'

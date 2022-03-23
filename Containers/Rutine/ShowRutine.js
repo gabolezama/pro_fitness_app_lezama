@@ -15,8 +15,7 @@ import isquiotibiales from '../../assets/muscles/isquiotibiales.jpg'
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useDispatch } from 'react-redux'
-import { useIsFocused } from '@react-navigation/native'
-import { ScreenSetter, ScreenResetter } from '../Store/actions/actions'
+import { ScreenSetter, ScreenResetter, menuState } from '../Store/actions/actions'
 
 const Tab = createMaterialTopTabNavigator();
 
