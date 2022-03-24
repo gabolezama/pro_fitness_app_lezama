@@ -13,7 +13,7 @@ import indexStore from './Containers/Store/indexStore';
 import UserSignOn from './Containers/UserSignOn/UserSignOn';
 import Camera from './Containers/Camera/Camera';
 import UserMenu from './Containers/UserMenu/UserMenu';
-import UserInfo from './Containers/Atom/MenuScreens/UserInfo';
+import UserInfo from './Containers/Atom/MenuScreens/UserInfo/UserInfo';
 import Settings from './Containers/Atom/MenuScreens/Settings';
 import Contacts from './Containers/Atom/MenuScreens/Contacts';
 
@@ -59,7 +59,9 @@ export default function App() {
             <Stack.Screen name='UserMenu' options={{headerLeft: ()=> null}}>
               {(props)=> <UserMenu {...props} orientation={vertical} font={'Lobster-Regular'}/>}
             </Stack.Screen>
-            <Stack.Screen name='UserInfo' component={UserInfo} font={'Lobster-Regular'} options={{headerLeft: ()=> null}}/>
+            <Stack.Screen name='UserInfo' options={{headerLeft: ()=> null}}>
+              {(props) => <UserInfo {...props} orientation={vertical} font={'Lobster-Regular'}/>}
+            </Stack.Screen>
             <Stack.Screen name='Settings' component={Settings} font={'Lobster-Regular'} options={{headerLeft: ()=> null}}/>
             <Stack.Screen name='Contacts' component={Contacts} font={'Lobster-Regular'} options={{headerLeft: ()=> null}}/>
           </Stack.Navigator>

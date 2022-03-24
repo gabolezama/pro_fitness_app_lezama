@@ -2,7 +2,8 @@ import { StyleSheet } from 'react-native';
 export const UserFormStyles = StyleSheet.create({
     container: {
       padding: 10,
-      justifyContent: 'center'
+      justifyContent: 'center',
+      alignItems: 'center'
     },
     title:{
       fontSize: 20,

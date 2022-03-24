@@ -16,8 +16,8 @@ export default function UserForm(props) {
     setRegisterUser
   }= props;
 
-  const [formData, setFormData] = useState(['Nombre','Apellido','Edad','Telefono', 'Email','Género', 'Training Level'])
-  const [inputFormValues, setInputFormValues] = useState({'Género': 'indefinido', 'Training Level': 'bajo'})
+  const [formData] = useState(['Nombre','Apellido','Edad','Telefono', 'Email','Contraseña'])
+  const [inputFormValues, setInputFormValues] = useState({})
   const [clear, setClear] = useState(false)
   const checkRegister = useSelector( state=> state.httpStatus.authStatus )
   const dispatcher = useDispatch()
@@ -39,15 +39,11 @@ export default function UserForm(props) {
     else
       delete inputFormValues[label]
   }
-  
-  const handlePressRadio = (label, value)=>{
-    setInputFormValues({...inputFormValues, [label]: value})
-  }
 
   const handleBtnAceptar = async () =>{
-    if( Object.keys(inputFormValues).length === 7 && Object.values(inputFormValues).length === 7){
+    if( Object.keys(inputFormValues).length === 6 && Object.values(inputFormValues).length === 6){
 
-      dispatcher( registerUser(inputFormValues.Email, inputFormValues.Apellido) )
+      dispatcher( registerUser(inputFormValues.Email, inputFormValues.Contraseña) )
     
     }else{
       alert('no has completado todos los campos del formulario')
@@ -63,7 +59,7 @@ export default function UserForm(props) {
           data={formData}
           renderItem={({ item }) => <ItemForm orientation={orientation} setClear={(set) => setClear(set)}
                                     clear={clear} label={item} handleInput={(label, text) => handleTextInput(label, text)}
-                                    onPressRadio={ (label, value)=> handlePressRadio(label, value)}/>}
+                                    onPressRadio={ (label, value)=> handlePressRadio(label, value)} userinfo={false}/>}
         />
       </View>
       <View style={UserFormStyles.buttonWrap}>
