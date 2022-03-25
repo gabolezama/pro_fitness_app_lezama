@@ -16,9 +16,13 @@ import UserMenu from './Containers/UserMenu/UserMenu';
 import UserInfo from './Containers/Atom/MenuScreens/UserInfo/UserInfo';
 import Settings from './Containers/Atom/MenuScreens/Settings';
 import Contacts from './Containers/Atom/MenuScreens/Contacts';
+import { init } from './EmbeddedBase/index';
 
 const Stack = createStackNavigator();
 
+init()
+.then(()=> console.log('Data base successful'))
+.catch(() => console.log('Database Failed'))
 export default function App() {
 
   const {width, height} = Dimensions.get('window')

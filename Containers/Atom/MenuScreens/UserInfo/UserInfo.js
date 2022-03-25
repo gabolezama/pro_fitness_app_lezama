@@ -3,6 +3,8 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import { UserFormStyles } from '../../../UserForm/UserForm.syles'
 import UserInfoItem from './UserInfoItem'
 import { TouchableButton } from '../../TochableButton'
+import { useDispatch } from 'react-redux'
+import { insertToBD } from '../../../Store/actions/actions'
 
 export default function UserInfo(props) {
   const{
@@ -11,15 +13,49 @@ export default function UserInfo(props) {
     font
   } = props
 
-  const [infoFields] = useState(['Peso','Género','Biceps','Hombros','Abdominales','Glúteos','Muslo','Pantorrilla','Altura','Training Level'])
+  const dispatcher = useDispatch()
+
+  const [infoFields] = useState(['Peso','Altura','Biceps','Hombros','Abdominales','Gluteos','Muslo','Pantorrilla','Genero','Training Level'])
   const [clear, setClear] = useState(false)
+  const [inputUserInfo, setInputUserInfo] = useState({
+    "Genero": 'indefinido',
+    "Training Level": 'N1',
+    "Biceps": '0',
+    "Hombros": '0',
+    "Abdominales": '0',
+    "Gluteos": '0',
+    "Muslo": '0',
+    "Pantorrilla": '0'
+    })
+
+  useEffect(async()=>{
+    console.log(inputUserInfo);
+  }, [inputUserInfo, clear])
 
   const handlePressRadio = (label, value)=>{
-    console.log(label,value);
+    setInputUserInfo({...inputUserInfo, [label]: value})
   }
 
   const handleTextInput = (label, text) =>{
-    console.log(label,text);
+    if(text.trim() !== '')
+    setInputUserInfo({...inputUserInfo, [label]: text})
+    else
+      delete inputUserInfo[label]
+  }
+
+  const handleBtnAceptar = () =>{
+    if(inputUserInfo.hasOwnProperty("Peso") && inputUserInfo.hasOwnProperty("Altura")){
+      if( parseInt(inputUserInfo.Peso) > 40 && inputUserInfo.Altura.length > 2){
+
+        dispatcher(insertToBD(inputUserInfo))
+      }else{
+
+        alert('Los valores de Peso y/o Altura no están correctos')
+      }
+    }else{
+
+      alert('Peso y Altura, son datos obligatorios')
+    }
   }
 
   return (

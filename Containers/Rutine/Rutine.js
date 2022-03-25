@@ -5,13 +5,15 @@ export default function Rutine(props) {
     const{
         title,
         font,
-        showImg
+        showImg,
+        userData
     } = props
 
     return (
-        <View style={{ display: 'flex', paddingHorizontal: 20, alignItems: 'center'}}>
+        <View style={{display: 'flex', paddingHorizontal: 20, alignItems: 'center'}}>
             <Text style={{ fontSize: 20, fontFamily: font, marginVertical: 10}}>{title}</Text>
             <Image style={{width:300, height:100}} source={showImg} />
+            <Text style={{justifyContent: 'center', textAlign: 'center', height:100}}>{JSON.stringify(userData)}</Text>
         </View>
     )
 }

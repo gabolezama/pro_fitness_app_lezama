@@ -15,7 +15,7 @@ const ItemForm = ({ userInfo, orientation, label, handleInput, clear, setClear }
         <TextInput
           value={clear ? '' : null}
           onChangeText={(text)=> handleInput(label, text)}
-          keyboardType={`${label === 'Edad' || label === 'Telefono'? 'numeric': label === 'Email'? 'email-address' : label === 'Contraseña'? 'password' : 'default'}`} 
+          keyboardType={ `${label === 'Edad' || label === 'Telefono' || userInfo? 'numeric': label === 'Email'? 'email-address' : label === 'Contraseña'? 'visible-password' : 'default'}`} 
           style={UserFormStyles.textIn} />
     </View>
   );

@@ -7,9 +7,9 @@ import ItemForm from '../../../UserForm/ItemForm';
 export default function UserInfoItem({orientation, label, onPressRadio, handleInput, clear, setClear}) {
     const [simpleSelection, setSimpleSelection] = useState(false)
     const radioGender = [
+        {label: 'No Específico', value: 'indefinido' },
         {label: 'Masculino', value: 'masculino' },
-        {label: 'Femenino', value: 'femenino' },
-        {label: 'No Específico', value: 'indefinido' }
+        {label: 'Femenino', value: 'femenino' }
         ];
     const radioTraining = [
         {label: 'Nivel1', value: 'N1' },
@@ -19,7 +19,7 @@ export default function UserInfoItem({orientation, label, onPressRadio, handleIn
         ];
 
     useEffect(()=>{
-        setSimpleSelection(label === 'Género' || label === 'Training Level')
+        setSimpleSelection(label === 'Genero' || label === 'Training Level')
     },[])
 
   return (
@@ -30,7 +30,7 @@ export default function UserInfoItem({orientation, label, onPressRadio, handleIn
         <View style={UserFormStyles.wrapSelection}>
             <Text style={UserFormStyles.text}>Introduzca su {label}: </Text>
             <RadioForm  style={{justifyContent: 'space-between', marginVertical: 5}}
-                radio_props={label === 'Género'? radioGender: radioTraining}
+                radio_props={label === 'Genero'? radioGender: radioTraining}
                 initial={0}
                 formHorizontal={true}
                 labelHorizontal={false}

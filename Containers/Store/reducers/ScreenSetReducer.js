@@ -9,7 +9,7 @@ const httpResponseExe = {
     writeStatus: false,
     readStatus: false,
     authStatus: false,
-    signInStatus: 'false'
+    signInStatus: null
 }
 
 const cameraState ={
@@ -17,10 +17,15 @@ const cameraState ={
     imageUriLocation: null
 }
 
+const dbState ={
+    dataToBd: null,
+    dataFromBd: null
+}
+
 // const counterScreenReducer = (state = initialState, { type, payload }) => {
 export const ScreenSetReducer = (state = initialState, action) => {
 
-    console.log('-+->',action);
+    console.log('--->',action);
     switch (action?.type) {
         case 'SHOW_RUTINE':
             return {
@@ -97,6 +102,27 @@ export const cameraReducer = (state = cameraState, action) => {
         return { 
             ...state,
             imageUriLocation: action?.uriLocation
+        }
+
+    default:
+        return state
+    }
+}
+
+export const dbReducer = (state = dbState, action) => {
+
+    switch (action?.type) {
+
+    case 'INSERT_TO_BD':
+        return { 
+            ...state,
+            dataToBd: action?.data
+        }
+        
+    case 'READ_FROM_BD':
+        return { 
+            ...state,
+            dataFromBd: action?.data
         }
 
     default:

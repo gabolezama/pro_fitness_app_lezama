@@ -14,8 +14,8 @@ import cuadriceps from '../../assets/muscles/cuadriceps.jpg'
 import isquiotibiales from '../../assets/muscles/isquiotibiales.jpg'
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { useDispatch } from 'react-redux'
-import { ScreenSetter, ScreenResetter, menuState } from '../Store/actions/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { ScreenSetter, ScreenResetter, menuState, readFromBD } from '../Store/actions/actions'
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -30,12 +30,19 @@ export default function ShowRutine(props) {
     const muscles = ["Pecho","Biceps","Triceps","Espalda","Hombros","Trapecio","Gemelos","Gluteos","Abductores","Cuadriceps","Isquitibiales"]
 
     const dispatcher = useDispatch();
+
+    const dataForCalulate = useSelector( state => state.dbState.dataFromBd)
     
     useEffect(()=>{
+        dispatcher( readFromBD() )
         dispatcher( ScreenSetter('SHOW_RUTINE') )
         
         return () => dispatcher( ScreenResetter('SHOW_RUTINE') )
     },[])
+
+    useEffect(()=>{
+        dataForCalulate !== undefined && dataForCalulate !== null ? console.log(dataForCalulate) : null
+    },[dataForCalulate])
 
     const imgSource = (str) =>{
         let img = null
@@ -84,7 +91,7 @@ export default function ShowRutine(props) {
         {
             muscles.map((muscle)=>{
                 return(<Tab.Screen name={`${muscle}`}>
-                        {(props)=> <Rutine {...props} title={muscle} showImg={imgSource(muscle)} orientation={orientation} font={font}/>}
+                        {(props)=> <Rutine {...props} title={muscle} showImg={imgSource(muscle)} orientation={orientation} font={font} userData={dataForCalulate}/>}
                     </Tab.Screen>)
             })      
         }
