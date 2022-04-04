@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { LvlStyles, MultipleChoice } from '../Level/Level.styles'
 import { useDispatch, useSelector } from 'react-redux'
+import { releaseData } from '../Store/actions/actions'
 
 const UserMenu = (props) => {
     const{
@@ -12,7 +13,8 @@ const UserMenu = (props) => {
     } = props
 
     const [lastScreen, setLastScreen] = useState('')
-    const [options] = useState(['Información del Usuario','Contactos','Ajustes', 'Salir'])
+    const [options] = useState(['Información del Usuario','Contactos','Ajustes', 'Liberar Datos', 'Salir'])
+    const dispatcher = useDispatch()
 
     let selected = useSelector((state) =>state.screens),
         isValid = selected !== undefined && Object.keys(selected).length > 0 ,
@@ -27,9 +29,15 @@ const UserMenu = (props) => {
             lastScreen !==''? navigation.navigate(lastScreen): null
             return
         }
+        
+        if( name === 'Liberar Datos') {
+            dispatcher( releaseData() )
+        }
+
         navigation.navigate(
             name === 'Información del Usuario'? 'UserInfo':
-            name === 'Contactos'? 'Contacts' : 'Settings')
+            name === 'Contactos'? 'Contacts' : 
+            name === 'Ajustes'? 'Settings' : 'UserSignOn')
     }
 
     return (

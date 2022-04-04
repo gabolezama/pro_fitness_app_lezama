@@ -19,7 +19,8 @@ const cameraState ={
 
 const dbState ={
     dataToBd: null,
-    dataFromBd: null
+    dataFromBd: null,
+    dataDeleted: null
 }
 
 // const counterScreenReducer = (state = initialState, { type, payload }) => {
@@ -123,6 +124,12 @@ export const dbReducer = (state = dbState, action) => {
         return { 
             ...state,
             dataFromBd: action?.data
+        }
+
+    case 'DELETE_DATA_BD':
+        return { 
+            ...state,
+            dataDeleted: action?.data
         }
 
     default:

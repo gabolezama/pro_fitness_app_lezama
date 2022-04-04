@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import {Text} from 'react-native'
 import Rutine from './Rutine'
 
 import pecho from '../../assets/muscles/pecho.jpg'
@@ -25,13 +26,15 @@ export default function ShowRutine(props) {
         route,
         orientation,
         navigation,
-        font
+        font,
+        font2
     }= props;
     const muscles = ["Pecho","Biceps","Triceps","Espalda","Hombros","Trapecio","Gemelos","Gluteos","Abductores","Cuadriceps","Isquitibiales"]
+    const [userData, setUserData] = useState({})
 
     const dispatcher = useDispatch();
 
-    const dataForCalulate = useSelector( state => state.dbState.dataFromBd)
+    const dataForCalculate = useSelector( state => state.dbState.dataFromBd)
     
     useEffect(()=>{
         dispatcher( readFromBD() )
@@ -41,8 +44,13 @@ export default function ShowRutine(props) {
     },[])
 
     useEffect(()=>{
-        dataForCalulate !== undefined && dataForCalulate !== null ? console.log(dataForCalulate) : null
-    },[dataForCalulate])
+        const lastUpdateDb = dataForCalculate._array[dataForCalculate.length-1];
+
+        if(lastUpdateDb !== undefined && lastUpdateDb !== null && Object.keys(lastUpdateDb).length > 0){
+            setUserData({...dataForCalculate._array[dataForCalculate.length-1]})
+        }
+        
+    },[dataForCalculate])
 
     const imgSource = (str) =>{
         let img = null
@@ -91,7 +99,10 @@ export default function ShowRutine(props) {
         {
             muscles.map((muscle)=>{
                 return(<Tab.Screen name={`${muscle}`}>
-                        {(props)=> <Rutine {...props} title={muscle} showImg={imgSource(muscle)} orientation={orientation} font={font} userData={dataForCalulate}/>}
+                        {
+                            (props)=> 
+                            <Rutine {...props} title={muscle} showImg={imgSource(muscle)} orientation={orientation} font={font} font2={font2} userData={userData}/>
+                        }
                     </Tab.Screen>)
             })      
         }

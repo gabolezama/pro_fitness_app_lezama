@@ -2,8 +2,8 @@ import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import UserForm from '../UserForm/UserForm';
 import UserLogIn from '../UserLogIn/UserLogIn';
-import { menuState, ScreenResetter, ScreenSetter } from '../Store/actions/actions';
-import { useDispatch } from 'react-redux';
+import { menuState, readFromBD, ScreenResetter, ScreenSetter } from '../Store/actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 const UserSignOn = (props) => {
     const{
@@ -15,13 +15,27 @@ const UserSignOn = (props) => {
       
     const [registerUser, setRegisterUser] = useState(false)
     const dispatcher = useDispatch()
+    
+    const dataDeleted = useSelector( state => state.dbState.dataDeleted)
+    console.log('fromBD', dataDeleted );
 
     useEffect(()=>{
+        dispatcher( readFromBD() )
         dispatcher( ScreenSetter('USER_FORM') )
         
         return () => dispatcher( ScreenResetter('USER_FORM') )
     },[registerUser])
 
+    useEffect(()=>{
+        if(dataDeleted){
+            alert(
+                `Ud no posee datos registrados
+                Necesitamos que pueda darnos algunos 
+                datos basicos para que la app funcione`
+                )
+            setRegisterUser(true)
+        }
+    }, [dataDeleted])
     return (
         <View>
             {registerUser?

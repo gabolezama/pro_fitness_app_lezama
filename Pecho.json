@@ -1,0 +1,378 @@
+{
+        "N1": {
+            "Warming": [
+                {
+                    "id": "P-N1-W-0",
+                    "name": "Flexiones en banco",
+                    "series": 4,
+                    "rep_qty": 1000
+                },
+                {
+                    "id": "P-N1-W-1",
+                    "name": "Apertura banco plano",
+                    "series": 3,
+                    "rep_qty": 15
+                }
+            ],
+            "Rutines": [
+                {
+                    "id": "P-N1-0",
+                    "name": "Pres de pecho en banco plano",
+                    "series": 3,
+                    "rep_qty": 10
+                },
+                {
+                    "id": "P-N1-1",
+                    "name": "Apertura en peck deck agarre neutro",
+                    "series": 3,
+                    "rep_qty": 15
+                },
+                {
+                    "id": "P-N1-2",
+                    "name": "Pres de pecho inclinado conv. agarre neutro",
+                    "series": 3,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N1-3",
+                    "name": "Mariposa",
+                    "series": 3,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N1-4",
+                    "name": "Pres plano con mancuernas",
+                    "series": 3,
+                    "rep_qty": 12
+                }
+            ]
+        },
+        "N2": {
+            "Warming": [
+                {
+                    "id": "P-N2-W-0",
+                    "name": "Flexiones",
+                    "series": 4,
+                    "rep_qty": 8
+                },
+                {
+                    "id": "P-N2-W-1",
+                    "name": "Flexiones Nivel2",
+                    "series": 4,
+                    "rep_qty": 15
+                }
+            ],
+            "Rutines": [
+                {
+                    "id": "P-N2-0",
+                    "name": "Pres declinado con mancuernas",
+                    "series": 3,
+                    "rep_qty": 10
+                },
+                {
+                    "id": "P-N2-1",
+                    "name": "Apertura banco declinado",
+                    "series": 3,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N2-2",
+                    "name": "Pres inclinado barra agarre prono",
+                    "series": 3,
+                    "rep_qty": 15
+                },
+                {
+                    "id": "P-N2-3",
+                    "name": "Poleas encontradas",
+                    "series": 3,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N2-4",
+                    "name": "Apertura en peck deck",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N2-5",
+                    "name": "Pres inclinado con mancuerna",
+                    "series": 3,
+                    "rep_qty": 12
+                }
+            ]
+        },
+        "N3": {
+            "Rutines": [
+                {
+                    "id": "P-N3-0",
+                    "name": "Pres inclinado mancuerna",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-1",
+                    "name": "Pres inclinado supino",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-2",
+                    "name": "Polea cruzada arriba",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N2-3",
+                    "name": "Pres palno con agarre prono",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N1-4",
+                    "name": "Pres declinado con barra pecho smith",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-5",
+                    "name": "Pres Landmine arrodillado",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-6",
+                    "name": "Polea cruzada arriba",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-7",
+                    "name": "Pres declinado mancuerna",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-8",
+                    "name": "Poleas encontradas",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-9",
+                    "name": "Fondo agarre abierto",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-10",
+                    "name": "Declinado con mancuerna supino",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-11",
+                    "name": "Pres inclinado con barra",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-12",
+                    "name": "Pres plano con barra",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-13",
+                    "name": "Polea uni. agarre neutro",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-14",
+                    "name": "Flexiones banco inclinado",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 15
+                },
+                {
+                    "id": "P-N3-15",
+                    "name": "Declinado barra Smith",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-16",
+                    "name": "Banco inclinado mancuernas agarre prono/ neutro",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-17",
+                    "name": "Pres plano barra agarre prono",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-18",
+                    "name": "Poleas cruzadas para abajo",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-19",
+                    "name": "Polea cruzada al frente",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N3-20",
+                    "name": "Apertura declinado",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                }
+            ]
+        },
+        "N4": {
+            "Rutines":[
+                {
+                    "id": "P-N4-0",
+                    "name": "Poleas Cruzadas arriba",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-1",
+                    "name": "Pres inclinado apertura con mancuernas",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-2",
+                    "name": "Inclinado con barra en Smith",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-3",
+                    "name": "Banco plano con mancuernas",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-4",
+                    "name": "Pres declinado cpno barra",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-5",
+                    "name": "Apertura banco inclinado",
+                    "especific": "superior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-10",
+                    "name": "Declinado con mancuerna supino",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-11",
+                    "name": "Banco declinado barra",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 10
+                },
+                {
+                    "id": "P-N4-12",
+                    "name": "Declinado con mancuerna supino",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-13",
+                    "name": "Poleas cuzadas agarre neutro",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-14",
+                    "name": "Apertura mancuerna agarre neutro",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-15",
+                    "name": "Pres plano maquina agarre prono",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-16",
+                    "name": "Fondo/ Felxiones combinados",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 15
+                },
+                {
+                    "id": "P-N4-17",
+                    "name": "Poleas encontrdas agarre neutro",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-18",
+                    "name": "Declinado banco Smith",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-19",
+                    "name": "Pres inclinado barra superior",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 12
+                },
+                {
+                    "id": "P-N4-20",
+                    "name": "Pres plano barra agarre prono",
+                    "especific": "inferior",
+                    "series": 4,
+                    "rep_qty": 15
+                }              
+            ]
+        }
+}

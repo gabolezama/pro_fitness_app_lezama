@@ -77,3 +77,17 @@ export const getUserInfo = () =>{
     })
     return promise;
 }
+
+export const deleteAllInfo = () =>{
+    const promise = new Promise((resolve, reject) =>{
+        db.transaction((tx)=>{
+            tx.executeSql(
+                `DELETE FROM user_info`,
+                [],
+                (_, result)=>{ resolve(result) },
+                (_, error)=>{ reject(error) },
+            )
+        })
+    })
+    return promise;
+}

@@ -61,9 +61,12 @@ const UserLogIn = (props) => {
             <TextInput
             value={inputPassword}
             onChangeText={(text)=> handleInputPassword(text)}
-            keyboardType={'password'} 
+            keyboardType={'visible-password'} 
             style={LogInStyles.input} />
 
+            <TouchableOpacity onPress={() => navigation.navigate("ShowRutine")}>
+                <TouchableButton style={{ paddingLeft: 33 }} font={font} textTitle={'Jump'} />
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => handleLogIn()}>
                 <TouchableButton style={{ paddingLeft: 33 }} font={font} textTitle={'Entrar'} />
             </TouchableOpacity>

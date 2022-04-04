@@ -2,7 +2,7 @@ import app from '../../../database/FirebaseDB'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { doc, getFirestore, setDoc } from "firebase/firestore/lite"
 import * as FileSystem from 'expo-file-system'
-import { getUserInfo, insertUserInfo } from '../../../EmbeddedBase'
+import { deleteAllInfo, getUserInfo, insertUserInfo } from '../../../EmbeddedBase'
 
 export const ScreenSetter = (tag) =>{
     return {
@@ -138,7 +138,7 @@ export const insertToBD = ( inputUserInfo ) =>{
 
         try {
             const result = await insertUserInfo( inputUserInfo )
-            console.log('holi', result);
+            console.log(result);
 
             setTimeout(() => {
                 
@@ -179,6 +179,39 @@ export const readFromBD = ( ) =>{
                 type: 'READ_FROM_BD',
                 data: false
             })
+        }
+    }
+}
+
+export const releaseData = ( sign = false) =>{
+    return async dispatch =>{
+
+        try {
+            const result = await deleteAllInfo( )
+            console.log(result);
+
+            setTimeout(()=>{
+
+                dispatch({
+                    type: 'DELETE_DATA_BD',
+                    data: true
+                })
+            }, 1000)
+            
+        } catch (error) {
+            console.log(error);
+            dispatch({
+                type: 'DELETE_DATA_BD',
+                data: false
+            })
+        } finally{
+            console.log('finally', sign);
+            if(sign){
+                dispatch({
+                    type: 'DELETE_DATA_BD',
+                    data: null
+                })
+            }
         }
     }
 }

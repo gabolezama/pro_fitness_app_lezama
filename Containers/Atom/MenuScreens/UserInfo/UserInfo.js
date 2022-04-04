@@ -4,7 +4,7 @@ import { UserFormStyles } from '../../../UserForm/UserForm.syles'
 import UserInfoItem from './UserInfoItem'
 import { TouchableButton } from '../../TochableButton'
 import { useDispatch } from 'react-redux'
-import { insertToBD } from '../../../Store/actions/actions'
+import { insertToBD, releaseData } from '../../../Store/actions/actions'
 
 export default function UserInfo(props) {
   const{
@@ -48,6 +48,7 @@ export default function UserInfo(props) {
       if( parseInt(inputUserInfo.Peso) > 40 && inputUserInfo.Altura.length > 2){
 
         dispatcher(insertToBD(inputUserInfo))
+        dispatcher( releaseData(true) )
       }else{
 
         alert('Los valores de Peso y/o Altura no están correctos')
@@ -59,11 +60,11 @@ export default function UserInfo(props) {
   }
 
   return (
-    <View style={UserFormStyles.container}>
+    <View style={[UserFormStyles.container,{height:'90%'}]}>
       <Text style={{...UserFormStyles.title, fontFamily: font}}>Información del Usuario</Text>
       <View style={{ alignItems: 'center' }}>
         <FlatList
-          style={{ marginBottom: 20, width: '80%', padding: 5, backgroundColor: 'lightgrey', borderRadius: 20 }}
+          style={{ marginVertical: 20, width: '70%', height: '70%', padding: 5, backgroundColor: 'lightgrey', borderRadius: 20 }}
           data={infoFields}
           renderItem={({ item }) => <UserInfoItem orientation={orientation} label={item} 
                                     clear={clear} setClear={(set)=> setClear(set)}

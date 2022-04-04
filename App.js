@@ -35,7 +35,8 @@ export default function App() {
     })
   
   const [loaded, error] = useFonts({
-    'Lobster-Regular': require ('./assets/fonts/Lobster-Regular.ttf')
+    'Lobster-Regular': require ('./assets/fonts/Lobster-Regular.ttf'),
+    'IntoLight': require ('./assets/fonts/ShadowsIntoLight-Regular.ttf')
   })
   if(!loaded) return <AppLoading/>
 
@@ -55,7 +56,7 @@ export default function App() {
               {(props)=> <UserSignOn {...props} orientation={vertical} font={'Lobster-Regular'}/>}
             </Stack.Screen>
             <Stack.Screen name="ShowRutine">
-              {(props)=> <ShowRutine {...props} orientation={vertical} font={'Lobster-Regular'}/>}
+              {(props)=> <ShowRutine {...props} orientation={vertical} font={'Lobster-Regular'} font2={'IntoLight'}/>}
             </Stack.Screen>
             <Stack.Screen name='Camera'>
               {(props)=> <Camera {...props} orientation={vertical} font={'Lobster-Regular'}/>}
