@@ -138,7 +138,7 @@ export const insertToBD = ( inputUserInfo ) =>{
 
         try {
             const result = await insertUserInfo( inputUserInfo )
-            console.log(result);
+            console.log('insert->', result);
 
             setTimeout(() => {
                 
@@ -183,35 +183,17 @@ export const readFromBD = ( ) =>{
     }
 }
 
-export const releaseData = ( sign = false) =>{
+export const releaseData = ( ) =>{
     return async dispatch =>{
 
         try {
             const result = await deleteAllInfo( )
-            console.log(result);
+            console.log('release', result);
 
-            setTimeout(()=>{
-
-                dispatch({
-                    type: 'DELETE_DATA_BD',
-                    data: true
-                })
-            }, 1000)
             
         } catch (error) {
             console.log(error);
-            dispatch({
-                type: 'DELETE_DATA_BD',
-                data: false
-            })
-        } finally{
-            console.log('finally', sign);
-            if(sign){
-                dispatch({
-                    type: 'DELETE_DATA_BD',
-                    data: null
-                })
-            }
+ 
         }
     }
 }

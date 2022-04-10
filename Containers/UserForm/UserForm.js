@@ -51,7 +51,7 @@ export default function UserForm(props) {
   }
 
   return (
-    <View style={UserFormStyles.container}>
+    <View style={[UserFormStyles.container,{height:450}]}>
       <Text style={{...UserFormStyles.title, fontFamily: font}}>Formulario de Registro</Text>
       <View style={{ alignItems: 'center' }}>
         <FlatList

@@ -34,23 +34,25 @@ export default function ShowRutine(props) {
 
     const dispatcher = useDispatch();
 
-    const dataForCalculate = useSelector( state => state.dbState.dataFromBd)
+    const DbData = useSelector( state => state.dbState.dataFromBd)
+    const currentData = useSelector( state => state.dbState.dataToBd)
+    const dataForCalculate = DbData.length === 0? currentData : DbData._array[DbData._array.length-1]
+    console.log('ShowRut-->', DbData);
+    console.log('ShowRut-2->', currentData);
+    
     
     useEffect(()=>{
         dispatcher( readFromBD() )
         dispatcher( ScreenSetter('SHOW_RUTINE') )
         
-        return () => dispatcher( ScreenResetter('SHOW_RUTINE') )
-    },[])
-
-    useEffect(()=>{
-        const lastUpdateDb = dataForCalculate._array[dataForCalculate.length-1];
-
-        if(lastUpdateDb !== undefined && lastUpdateDb !== null && Object.keys(lastUpdateDb).length > 0){
-            setUserData({...dataForCalculate._array[dataForCalculate.length-1]})
+        if(DbData?.length === 0){
+            alert
+            (`Informacion Requerida`)
         }
         
-    },[dataForCalculate])
+        return () => dispatcher( ScreenResetter('SHOW_RUTINE') )
+    },[])
+    
 
     const imgSource = (str) =>{
         let img = null
@@ -97,11 +99,14 @@ export default function ShowRutine(props) {
             screenOptions={{ tabBarScrollEnabled: true}}
         >       
         {
-            muscles.map((muscle)=>{
-                return(<Tab.Screen name={`${muscle}`}>
+            muscles.map((muscle, index)=>{
+                return(<Tab.Screen key={index} name={`${muscle}`}>
                         {
                             (props)=> 
-                            <Rutine {...props} title={muscle} showImg={imgSource(muscle)} orientation={orientation} font={font} font2={font2} userData={userData}/>
+                            <Rutine {...props} title={muscle} showImg={imgSource(muscle)} 
+                                    orientation={orientation} font={font} font2={font2} 
+                                    userData={ dataForCalculate }
+                                    />
                         }
                     </Tab.Screen>)
             })      

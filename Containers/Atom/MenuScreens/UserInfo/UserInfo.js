@@ -48,7 +48,7 @@ export default function UserInfo(props) {
       if( parseInt(inputUserInfo.Peso) > 40 && inputUserInfo.Altura.length > 2){
 
         dispatcher(insertToBD(inputUserInfo))
-        dispatcher( releaseData(true) )
+        navigation.navigate('UserSignOn')
       }else{
 
         alert('Los valores de Peso y/o Altura no están correctos')

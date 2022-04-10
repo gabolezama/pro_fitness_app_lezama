@@ -14,12 +14,12 @@ export default function Rutine(props) {
         userData,
         navigation
     } = props
-    console.log('lvl', userData.training_level);
+
     const userMuscleRutine = 
     navigation.getState().index === 0? 
-    Pecho[userData.training_level] :
+    Pecho[userData?.training_level] :
     navigation.getState().index === 1? 
-    Biceps[userData.training_level] : [];
+    Biceps[userData?.training_level] : [];
      
     return (
         <View style={{display: 'flex', paddingHorizontal: 20, alignItems: 'center'}}>
@@ -31,7 +31,7 @@ export default function Rutine(props) {
                     data={userMuscleRutine.Rutines}
                     renderItem={({ item }) => <MuscleRutine title={item.name} series={item.series} qty={item.rep_qty} font={font2} />}
                 />:
-                <Text>El array no se ha cargado</Text>
+                <Text>Cargando...</Text>
             }
         </View>
     )

@@ -1,0 +1,16 @@
+{
+    "Military_Training": {
+        "Address": "Av Jujuy & calle Venezuela, CABA, Argentina",
+        "Coutry": "Argentina",
+        "Owner": "Luis Mata",
+        "Businness Phone": "+541123654098"
+    },
+    "Developer": {
+        "Name": "Freddy Lezama",
+        "Country": "Venezuela",
+        "Technoligy": "React Native",
+        "Resources": "React, React Native, Firebase, SQLite, Redux",
+        "Address": "CABA, Argentina",
+        "Contact phone": "+541189043222"
+    }
+}

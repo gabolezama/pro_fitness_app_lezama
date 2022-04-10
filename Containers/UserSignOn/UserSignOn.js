@@ -16,8 +16,8 @@ const UserSignOn = (props) => {
     const [registerUser, setRegisterUser] = useState(false)
     const dispatcher = useDispatch()
     
-    const dataDeleted = useSelector( state => state.dbState.dataDeleted)
-    console.log('fromBD', dataDeleted );
+    const dataDeleted = useSelector( state => state.dbState.dataFromBd)
+    console.log('fromBD-->', dataDeleted?.length );
 
     useEffect(()=>{
         dispatcher( readFromBD() )
@@ -27,13 +27,10 @@ const UserSignOn = (props) => {
     },[registerUser])
 
     useEffect(()=>{
-        if(dataDeleted){
-            alert(
-                `Ud no posee datos registrados
-                Necesitamos que pueda darnos algunos 
-                datos basicos para que la app funcione`
-                )
-            setRegisterUser(true)
+        if(dataDeleted?.length === 0){
+            alert
+            (`Ud no posee datos registrados. Necesitamos que pueda darnos algunos datos basicos para que la app funcione`)
+            navigation.navigate('UserInfo')
         }
     }, [dataDeleted])
     return (

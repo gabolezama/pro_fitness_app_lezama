@@ -8,10 +8,10 @@ const ItemForm = ({ userInfo, orientation, label, handleInput, clear, setClear }
     
     return ()=> setClear(false)
   },[clear])
-  const inputTitle = userInfo? 'Ancho' : 'Introduzca su'
+  
   return (
     <View style={orientation ? UserFormStyles.wrapper : UserFormStyles.wrapHorizontal}>
-      <Text style={UserFormStyles.text}>{inputTitle} {label}: </Text>
+      <Text style={UserFormStyles.text}>Introduzca {label}: </Text>
         <TextInput
           value={clear ? '' : null}
           onChangeText={(text)=> handleInput(label, text)}

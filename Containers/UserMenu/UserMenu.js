@@ -13,7 +13,7 @@ const UserMenu = (props) => {
     } = props
 
     const [lastScreen, setLastScreen] = useState('')
-    const [options] = useState(['Información del Usuario','Contactos','Ajustes', 'Liberar Datos', 'Salir'])
+    const [options] = useState(['Información del Usuario','Contactos', 'Liberar Datos', 'Salir'])
     const dispatcher = useDispatch()
 
     let selected = useSelector((state) =>state.screens),
@@ -36,8 +36,7 @@ const UserMenu = (props) => {
 
         navigation.navigate(
             name === 'Información del Usuario'? 'UserInfo':
-            name === 'Contactos'? 'Contacts' : 
-            name === 'Ajustes'? 'Settings' : 'UserSignOn')
+            name === 'Contactos'? 'Contacts' : 'UserSignOn')
     }
 
     return (

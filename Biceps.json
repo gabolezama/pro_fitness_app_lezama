@@ -22,37 +22,37 @@
             ],
             "Rutines": [
                 {
-                    "id": "B-N2-5",
+                    "id": "B-N1-5",
                     "name": "Curps mancuerna banco inclinado",
                     "series": 3,
                     "rep_qty": 8
                 },
                 {
-                    "id": "B-N2-6",
+                    "id": "B-N1-6",
                     "name": "Curps sentado rotando supinacion",
                     "series": 4,
                     "rep_qty": 10
                 },
                 {
-                    "id": "B-N2-7",
+                    "id": "B-N1-7",
                     "name": "Martillo banco Scott",
                     "series": 3,
                     "rep_qty": 10
                 },
                 {
-                    "id": "B-N2-8",
+                    "id": "B-N1-8",
                     "name": "Concentrado de pies",
                     "series": 3,
                     "rep_qty": 10
                 },
                 {
-                    "id": "B-N2-9",
+                    "id": "B-N1-9",
                     "name": "Apertura en peck deck",
                     "series": 4,
                     "rep_qty": 12
                 },
                 {
-                    "id": "P-N2-10",
+                    "id": "P-N1-10",
                     "name": "Pres inclinado con mancuerna",
                     "series": 3,
                     "rep_qty": 12
@@ -82,31 +82,31 @@
             ],
             "Rutines": [
                 {
-                    "id": "B-N1-0",
+                    "id": "B-N2-0",
                     "name": "Banco predicador agarre ancho",
                     "series": 3,
                     "rep_qty": 10
                 },
                 {
-                    "id": "B-N1-1",
+                    "id": "B-N2-1",
                     "name": "Curps con mancuerna agarre neutro",
                     "series": 3,
                     "rep_qty": 12
                 },
                 {
-                    "id": "B-N1-2",
+                    "id": "B-N2-2",
                     "name": "Curps en banco inclinado",
                     "series": 3,
                     "rep_qty": 12
                 },
                 {
-                    "id": "B-N1-3",
+                    "id": "B-N2-3",
                     "name": "Concentrado agarre supino",
                     "series": 3,
                     "rep_qty": 16
                 },
                 {
-                    "id": "P-N1-4",
+                    "id": "P-N2-4",
                     "name": "Lateral con polea",
                     "series": 4,
                     "rep_qty": 12
@@ -134,67 +134,67 @@
                     "rep_qty": 12
                 },
                 {
-                    "id": "B-N2-3",
+                    "id": "B-N3-3",
                     "name": "Martillo Alterno",
                     "series": 4,
                     "rep_qty": 10
                 },
                 {
-                    "id": "B-N1-4",
+                    "id": "B-N3-4",
                     "name": "Curps banco inclinado con barra",
                     "series": 4,
                     "rep_qty": 12
                 },
                 {
-                    "id": "B-N1-5",
+                    "id": "B-N3-5",
                     "name": "Curps barra sentado apoyo en rodillas",
                     "series": 4,
                     "rep_qty": 12
                 },
                 {
-                    "id": "B-N1-6",
+                    "id": "B-N3-6",
                     "name": "Curps en polea una mano",
                     "series": 4,
                     "rep_qty": 12
                 },
                 {
-                    "id": "B-N1-7",
+                    "id": "B-N3-7",
                     "name": "Curps sentado con mancuerna",
                     "series": 4,
                     "rep_qty": 10
                 },
                 {
-                    "id": "B-N1-8",
+                    "id": "B-N3-8",
                     "name": "Lateral con cuerda sentado",
                     "series": 4,
                     "rep_qty": 12
                 },
                 {
-                    "id": "B-N1-9",
+                    "id": "B-N3-9",
                     "name": "Curps banco predicador",
                     "series": 4,
                     "rep_qty": 12
                 },
                 {
-                    "id": "B-N4-10",
+                    "id": "B-N3-10",
                     "name": "Banco predicador supino",
                     "series": 4,
                     "rep_qty": 12
                 },
                 {
-                    "id": "B-N4-11",
+                    "id": "B-N3-11",
                     "name": "Curps sentado con barra",
                     "series": 4,
                     "rep_qty": 12
                 },
                 {
-                    "id": "B-N4-12",
+                    "id": "B-N3-12",
                     "name": "Martillo alterno",
                     "series": 4,
                     "rep_qty": 10
                 },
                 {
-                    "id": "B-N4-13",
+                    "id": "B-N3-13",
                     "name": "Curps con barrita en polea",
                     "series": 4,
                     "rep_qty": 12

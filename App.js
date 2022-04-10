@@ -48,27 +48,27 @@ export default function App() {
       <Provider store={ indexStore }>
         <NavigationContainer style={vertical ? {flex:1, width:'50%', height:'50%'} : {width:'50%', height:'25%'} }>
           <Stack.Navigator
-          // initialRouteName='Show Rutine'
           screenOptions={(props)=>({headerStyle:{ backgroundColor:'lightblue'}, headerTitleStyle:{fontFamily:'Lobster-Regular'},
                           headerRight: () => <UserIcon navigation={props.navigation}/>})}
           >
-            <Stack.Screen name="UserSignOn">
+            <Stack.Screen name="UserSignOn" options={{ title: 'Sign In' }}>
               {(props)=> <UserSignOn {...props} orientation={vertical} font={'Lobster-Regular'}/>}
             </Stack.Screen>
-            <Stack.Screen name="ShowRutine">
+            <Stack.Screen name="ShowRutine" options={{ title: 'Rutinas' }}>
               {(props)=> <ShowRutine {...props} orientation={vertical} font={'Lobster-Regular'} font2={'IntoLight'}/>}
             </Stack.Screen>
             <Stack.Screen name='Camera'>
               {(props)=> <Camera {...props} orientation={vertical} font={'Lobster-Regular'}/>}
             </Stack.Screen>
-            <Stack.Screen name='UserMenu' options={{headerLeft: ()=> null}}>
+            <Stack.Screen name='UserMenu' options={{title: 'Menú de Usuario', headerLeft: ()=> null}}>
               {(props)=> <UserMenu {...props} orientation={vertical} font={'Lobster-Regular'}/>}
             </Stack.Screen>
-            <Stack.Screen name='UserInfo' options={{headerLeft: ()=> null}}>
+            <Stack.Screen name='UserInfo' options={{title: 'Información', headerLeft: ()=> null}}>
               {(props) => <UserInfo {...props} orientation={vertical} font={'Lobster-Regular'}/>}
             </Stack.Screen>
-            <Stack.Screen name='Settings' component={Settings} font={'Lobster-Regular'} options={{headerLeft: ()=> null}}/>
-            <Stack.Screen name='Contacts' component={Contacts} font={'Lobster-Regular'} options={{headerLeft: ()=> null}}/>
+            <Stack.Screen name='Contacts' options={{title: 'Contacto', headerLeft: ()=> null}}>
+              {(props) => <Contacts {...props} />}
+            </Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
