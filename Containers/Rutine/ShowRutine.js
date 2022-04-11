@@ -45,7 +45,7 @@ export default function ShowRutine(props) {
         dispatcher( readFromBD() )
         dispatcher( ScreenSetter('SHOW_RUTINE') )
         
-        if(DbData?.length === 0){
+        if(DbData?.length === 0 && currentData === null){
             alert
             (`Informacion Requerida`)
         }

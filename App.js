@@ -16,13 +16,17 @@ import UserMenu from './Containers/UserMenu/UserMenu';
 import UserInfo from './Containers/Atom/MenuScreens/UserInfo/UserInfo';
 import Settings from './Containers/Atom/MenuScreens/Settings';
 import Contacts from './Containers/Atom/MenuScreens/Contacts';
-import { init } from './EmbeddedBase/index';
+import { init, initSouvenirs } from './EmbeddedBase/index';
 
 const Stack = createStackNavigator();
 
-init()
-.then(()=> console.log('Data base successful'))
-.catch(() => console.log('Database Failed'))
+Promise.all([
+  init(), 
+  initSouvenirs()
+]).then(()=> console.log('Data base successful'))
+  .catch(() => console.log('Database Failed'))
+
+initSouvenirs
 export default function App() {
 
   const {width, height} = Dimensions.get('window')
@@ -57,7 +61,7 @@ export default function App() {
             <Stack.Screen name="ShowRutine" options={{ title: 'Rutinas' }}>
               {(props)=> <ShowRutine {...props} orientation={vertical} font={'Lobster-Regular'} font2={'IntoLight'}/>}
             </Stack.Screen>
-            <Stack.Screen name='Camera'>
+            <Stack.Screen name='Camera' options={{title: 'Souvenirs'}}>
               {(props)=> <Camera {...props} orientation={vertical} font={'Lobster-Regular'}/>}
             </Stack.Screen>
             <Stack.Screen name='UserMenu' options={{title: 'Menú de Usuario', headerLeft: ()=> null}}>

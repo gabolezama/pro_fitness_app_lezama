@@ -19,7 +19,9 @@ const cameraState ={
 
 const dbState ={
     dataToBd: null,
-    dataFromBd: null
+    dataFromBd: null,
+    souvenirToBd: null,
+    souvenirFromBd: null
 }
 
 // const counterScreenReducer = (state = initialState, { type, payload }) => {
@@ -123,6 +125,18 @@ export const dbReducer = (state = dbState, action) => {
         return { 
             ...state,
             dataFromBd: action?.data
+        }
+
+    case 'SOUVENIRS_TO_BD':
+        return { 
+            ...state,
+            souvenirToBd: action?.data
+        }
+
+    case 'SOUVENIRS_FROM_BD':
+        return { 
+            ...state,
+            souvenirFromBd: action?.data
         }
 
     default:

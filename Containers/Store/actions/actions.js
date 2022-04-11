@@ -2,7 +2,7 @@ import app from '../../../database/FirebaseDB'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { doc, getFirestore, setDoc } from "firebase/firestore/lite"
 import * as FileSystem from 'expo-file-system'
-import { deleteAllInfo, getUserInfo, insertUserInfo } from '../../../EmbeddedBase'
+import { deleteAllInfo, deleteSouvenirs, getSouvenirInfo, getUserInfo, insertUserInfo, writeSouvenirs } from '../../../EmbeddedBase'
 
 export const ScreenSetter = (tag) =>{
     return {
@@ -182,14 +182,53 @@ export const readFromBD = ( ) =>{
         }
     }
 }
+export const souvenirsToBd = (picture, location) =>{
+    return async dispatch =>{
+        try {
+            const result = await writeSouvenirs(picture, location)
+
+            dispatch({
+                type: 'SOUVENIRS_TO_BD',
+                data: [picture, location]
+            })
+            
+        } catch (error) {
+            console.log(error);
+            dispatch({
+                type: 'SOUVENIRS_TO_BD',
+                data: false
+            })
+        }
+    }
+}
+
+export const souvenirsFromBd = () =>{
+    return async dispatch =>{
+        try {
+            const result = await getSouvenirInfo()
+            console.log('getSuvr-->', result);
+
+                dispatch({
+                    type: 'SOUVENIRS_FROM_BD',
+                    data: result.rows._array[result.rows._array.length-1]
+                })
+            
+        } catch (error) {
+            console.log(error);
+            dispatch({
+                type: 'SOUVENIRS_FROM_BD',
+                data: false
+            })
+        }
+    }
+}
 
 export const releaseData = ( ) =>{
     return async dispatch =>{
 
         try {
-            const result = await deleteAllInfo( )
-            console.log('release', result);
-
+            await deleteAllInfo( )
+            await deleteSouvenirs( )
             
         } catch (error) {
             console.log(error);

@@ -27,6 +27,25 @@ export const init = () =>{
     })
     return promise;
 }
+
+export const initSouvenirs = () =>{
+    const promise = new Promise((resolve, reject) =>{
+        db.transaction((tx)=>{
+            tx.executeSql(
+                `CREATE TABLE IF NOT EXISTS souvenirs (
+                    id INTEGER PRIMARY KEY NOT NULL,
+                    picture TEXT,
+                    location TEXT
+                    )`,
+                [],
+                (result)=>{ resolve(result) },
+                (_, error)=>{ reject(error) },
+            )
+        })
+    })
+    return promise;
+}
+
 export const insertUserInfo = (data) =>{
     console.log(data);
     const promise = new Promise((resolve, reject) =>{
@@ -64,6 +83,40 @@ export const insertUserInfo = (data) =>{
     return promise;
 }
 
+export const writeSouvenirs = (picture, location) =>{
+    const promise = new Promise((resolve, reject) =>{
+        db.transaction((tx)=>{
+            tx.executeSql(
+                `INSERT INTO souvenirs (
+                    picture,
+                    location)
+                    VALUES(?,?)`,
+                [
+                    picture,
+                    location
+                ],
+                (_, result)=>{ resolve(result) },
+                (_, error)=>{ reject(error) },
+            )
+        })
+    })
+    return promise;
+}
+
+export const getSouvenirInfo = () =>{
+    const promise = new Promise((resolve, reject) =>{
+        db.transaction((tx)=>{
+            tx.executeSql(
+                `SELECT * FROM souvenirs`,
+                [],
+                (_, result)=>{ resolve(result) },
+                (_, error)=>{ reject(error) },
+            )
+        })
+    })
+    return promise;
+}
+
 export const getUserInfo = () =>{
     const promise = new Promise((resolve, reject) =>{
         db.transaction((tx)=>{
@@ -83,6 +136,19 @@ export const deleteAllInfo = () =>{
         db.transaction((tx)=>{
             tx.executeSql(
                 `DELETE FROM user_info`,
+                [],
+                (_, result)=>{ resolve(result) },
+                (_, error)=>{ reject(error) },
+            )
+        })
+    })
+    return promise;
+}
+export const deleteSouvenirs = () =>{
+    const promise = new Promise((resolve, reject) =>{
+        db.transaction((tx)=>{
+            tx.executeSql(
+                `DELETE FROM souvenirs`,
                 [],
                 (_, result)=>{ resolve(result) },
                 (_, error)=>{ reject(error) },

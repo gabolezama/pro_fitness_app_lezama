@@ -3,7 +3,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 import { UserFormStyles } from '../UserForm/UserForm.syles';
 import { TouchableButton } from '../Atom/TochableButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { consfirmUser, userLogInResetter } from '../Store/actions/actions';
+import { consfirmUser, souvenirsFromBd, userLogInResetter } from '../Store/actions/actions';
 import { StatusBar } from 'expo-status-bar';
 
 const UserLogIn = (props) => {
@@ -22,7 +22,7 @@ const UserLogIn = (props) => {
 
     const dispatcher = useDispatch()
     const isValidUser = useSelector( (state) => state.httpStatus.signInStatus )
-    
+
     useEffect(()=>{
 
         if(isValidUser === 'true'){
@@ -64,9 +64,6 @@ const UserLogIn = (props) => {
             keyboardType={'visible-password'} 
             style={LogInStyles.input} />
 
-            <TouchableOpacity onPress={() => navigation.navigate("ShowRutine")}>
-                <TouchableButton style={{ paddingLeft: 33 }} font={font} textTitle={'Jump'} />
-            </TouchableOpacity>
             <TouchableOpacity onPress={() => handleLogIn()}>
                 <TouchableButton style={{ paddingLeft: 33 }} font={font} textTitle={'Entrar'} />
             </TouchableOpacity>
