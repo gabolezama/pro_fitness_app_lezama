@@ -79,7 +79,7 @@ const Camera = ({font}) => {
             </TouchableOpacity>
             {
                 imgUri !== undefined && imgUri !== null && imgUri !== ''?
-                <Image style={{height: 250, width: 200}} source={{ uri: imgUri}}/>:
+                <Image style={{height: 150, width: 100}} source={{ uri: imgUri}}/>:
                 <Text> No hay imagen para mostrar</Text>
             }
             <TouchableOpacity style={{marginVertical: 10}} onPress={()=> handleTakeLocation() }>
@@ -87,7 +87,7 @@ const Camera = ({font}) => {
             </TouchableOpacity>
             {
                 imgUriLocation !== undefined && imgUriLocation !== null && imgUriLocation !== ''?
-                <Image style={{height: 250, width: 200}} source={{ uri: imgUriLocation}}/>:
+                <Image style={{height: 150, width: 100}} source={{ uri: imgUriLocation}}/>:
                 <Text>Presione el boton para obtener ubicación</Text>
             }
             {   imgUri && imgUriLocation &&

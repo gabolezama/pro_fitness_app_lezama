@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "ProFitnessApp",
+    "name": "Pro Fitness App",
     "slug": "pro_fitness_app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/helmet.png",
+    "icon": "./assets/helmet-16px.png",
     "splash": {
       "image": "./assets/helmet-256px.png",
       "resizeMode": "contain",
@@ -17,15 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.freddy-lezama.pro-fitnes-app",
+      "bundleIdentifier": "com.freddyLezamaCode.proFitnesApp",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.freddy-lezama.pro-fitnes-app",
+      "package": "com.freddyLezamaCode.proFitnesApp",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/helmet.png",
+        "foregroundImage": "./assets/helmet-16px.png",
         "backgroundColor": "#D3D3D3"
       },
       "permissions":[
