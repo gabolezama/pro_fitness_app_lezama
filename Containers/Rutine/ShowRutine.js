@@ -37,8 +37,8 @@ export default function ShowRutine(props) {
     const DbData = useSelector( state => state.dbState.dataFromBd)
     const currentData = useSelector( state => state.dbState.dataToBd)
     const dataForCalculate = DbData.length === 0? currentData : DbData._array[DbData._array.length-1]
-    console.log('ShowRut-->', DbData);
-    console.log('ShowRut-2->', currentData);
+    // console.log('ShowRut-->', DbData);
+    // console.log('ShowRut-2->', currentData);
     
     
     useEffect(()=>{

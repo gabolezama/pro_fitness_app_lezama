@@ -17,7 +17,7 @@ const UserSignOn = (props) => {
     const dispatcher = useDispatch()
     
     const dataDeleted = useSelector( state => state.dbState.dataFromBd)
-    console.log('fromBD-->', dataDeleted?.length );
+    // console.log('fromBD-->', dataDeleted?.length );
 
     useEffect(()=>{
         dispatcher( readFromBD() )

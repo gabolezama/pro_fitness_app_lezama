@@ -206,7 +206,7 @@ export const souvenirsFromBd = () =>{
     return async dispatch =>{
         try {
             const result = await getSouvenirInfo()
-            console.log('getSuvr-->', result);
+            // console.log('getSuvr-->', result);
 
                 dispatch({
                     type: 'SOUVENIRS_FROM_BD',

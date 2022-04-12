@@ -19,7 +19,7 @@ export default function IconMenuItem({ navigation, title, lastScreen }) {
         return iconSelector
     }
     const handleItemAction = (name, lastScreen) =>{
-        console.log('llega', lastScreen);
+        // console.log('llega', lastScreen);
         if(name === 'Home'){
             navigation.navigate( lastScreen )
             return

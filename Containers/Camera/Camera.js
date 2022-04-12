@@ -11,10 +11,10 @@ const Camera = ({font}) => {
     const dispatcher = useDispatch()
 
     const seeSouvenir = useSelector( state => state.dbState.souvenirFromBd)
-    console.log('dataSuvr-->', seeSouvenir);
+    // console.log('dataSuvr-->', seeSouvenir);
 
     useEffect(()=>{
-            dispatcher( souvenirsFromBd() )
+        dispatcher( souvenirsFromBd() )
     },[seeSouvenir])
 
     const verifyPermissions = async() =>{
