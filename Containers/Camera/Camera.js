@@ -1,21 +1,14 @@
-import { View, Text, Alert, Button, Image, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, Alert, Image, TouchableOpacity } from 'react-native'
+import React from 'react'
 import * as ImagePicker from 'expo-image-picker'
 import * as Location from 'expo-location';
 import { useDispatch, useSelector } from 'react-redux';
-import { addImageToFile, sampleImageUrl, souvenirsFromBd, souvenirsToBd } from '../Store/actions/actions';
+import { addImageToFile, sampleImageUrl, souvenirsToBd } from '../Store/actions/actions';
 import { TouchableButton } from '../Atom/TochableButton';
 const API_KEY = 'AIzaSyBFlpq18XzVrsV7f19lQiqktzso1HyGI3I';
 
 const Camera = ({font}) => {
     const dispatcher = useDispatch()
-
-    const seeSouvenir = useSelector( state => state.dbState.souvenirFromBd)
-    // console.log('dataSuvr-->', seeSouvenir);
-
-    useEffect(()=>{
-        dispatcher( souvenirsFromBd() )
-    },[seeSouvenir])
 
     const verifyPermissions = async() =>{
         const { granted } = await ImagePicker.requestCameraPermissionsAsync()
@@ -46,7 +39,7 @@ const Camera = ({font}) => {
         dispatcher( addImageToFile( image.uri ))
     }
 
-    const imgUri = useSelector( state => state.camera.imageUri) ?? seeSouvenir?.picture ?? null;
+    const imgUri = useSelector( state => state.camera.imageUri) ?? null;
 
     const handleTakeLocation = async () => {
         let { status } = await Location.requestForegroundPermissionsAsync();
@@ -66,7 +59,7 @@ const Camera = ({font}) => {
             `https://maps.googleapis.com/maps/api/staticmap?center=${myLocation.lat},${myLocation.lng}&zoom=13&size=400x400&markers=color:blue%7Clabel:F%7C${myLocation.lat},${myLocation.lng}&key=${API_KEY}`
         ))
     }
-    const imgUriLocation = useSelector( state => state.camera.imageUriLocation) ?? seeSouvenir?.location ?? null;
+    const imgUriLocation = useSelector( state => state.camera.imageUriLocation) ?? null;
 
     const saveSouvenirs = () =>{
         dispatcher( souvenirsToBd(imgUri.toString(), imgUriLocation.toString()) )
@@ -74,6 +67,11 @@ const Camera = ({font}) => {
 
     return (
         <View style={{marginVertical: 20, alignItems:'center'}}>
+            {   imgUri && imgUriLocation &&
+                <TouchableOpacity style={{marginVertical: 10}} onPress={()=> saveSouvenirs() }>
+                    <TouchableButton style={{ paddingLeft: 20 }} textTitle={'Guardar!!'} font={font}/>
+                </TouchableOpacity>
+            }
             <TouchableOpacity style={{marginVertical: 10}} onPress={()=> handleTakeImage() }>
                 <TouchableButton style={{ paddingLeft: 30 }} textTitle={'Camara!!'} font={font}/>
             </TouchableOpacity>
@@ -89,11 +87,6 @@ const Camera = ({font}) => {
                 imgUriLocation !== undefined && imgUriLocation !== null && imgUriLocation !== ''?
                 <Image style={{height: 150, width: 100}} source={{ uri: imgUriLocation}}/>:
                 <Text>Presione el boton para obtener ubicación</Text>
-            }
-            {   imgUri && imgUriLocation &&
-                <TouchableOpacity style={{marginVertical: 10}} onPress={()=> saveSouvenirs() }>
-                    <TouchableButton style={{ paddingLeft: 20 }} textTitle={'Guardar!!'} font={font}/>
-                </TouchableOpacity>
             }
         </View>
     );
